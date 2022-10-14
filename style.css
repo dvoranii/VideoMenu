@@ -1,0 +1,185 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-btn {
+  width: 200px;
+}
+
+.btn-wrapper {
+  position: relative;
+}
+.settings-menu {
+  position: absolute;
+  display: flex;
+  bottom: 20px;
+  width: 100%;
+  background: red;
+  visibility: hidden;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  animation: slideDownFadeOut 250ms ease;
+  animation-fill-mode: forwards;
+  transition: all 250ms ease;
+}
+
+.settings-menu.active {
+  pointer-events: all;
+  animation: slideUpFadeIn 250ms ease;
+  animation-fill-mode: forwards;
+}
+
+/* .settings-menu:not(.active) {
+
+} */
+
+.settings-menu .list-first {
+  list-style: none;
+}
+
+.list-main,
+.list-second,
+.list-third,
+.list-fourth {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* background-color: blue; */
+  width: 100%;
+  padding: 10px;
+}
+
+.list-main {
+  background: yellow;
+  height: 100px;
+  animation: slideRight 250ms ease;
+  list-style: none;
+}
+.list-main.optionClicked {
+  animation: slideLeft 250ms ease;
+  animation-fill-mode: forwards;
+}
+.list-second.optionClicked {
+  animation: slideLeftMore 250ms ease;
+  animation-fill-mode: forwards;
+}
+.list-third.optionClicked {
+  animation: slideLeftMore 250ms ease;
+  animation-fill-mode: forwards;
+}
+.list-fourth.optionClicked {
+  animation: slideLeftMore 250ms ease;
+  animation-fill-mode: forwards;
+}
+.list-second {
+  background-color: blue;
+  position: absolute;
+  list-style: none;
+  right: -100%;
+  height: 100%;
+  animation: slideRight 250ms ease;
+}
+
+.list-third {
+  background-color: orange;
+  position: absolute;
+  list-style: none;
+  right: -100%;
+  height: 100%;
+}
+.list-fourth {
+  background-color: cyan;
+  position: absolute;
+  list-style: none;
+  right: -100%;
+  height: 100%;
+}
+
+@keyframes slideUpFadeIn {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.menu-back {
+  border: none;
+  cursor: pointer;
+}
+
+.menu-back::before {
+  content: "<";
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 4px 8px;
+}
+@keyframes slideDownFadeOut {
+  from {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* rename this */
+@keyframes slideLeftMore {
+  from {
+    right: -100%;
+  }
+
+  to {
+    right: 0%;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+/* @keyframes slideRight {
+} */
